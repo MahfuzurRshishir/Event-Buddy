@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "ad3b81a0-5e94-4d55-bdc0-431250108cd0",
+		"name": "DeepChainLab-EventBuddy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42762284"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "register new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"user1\",\r\n    \"email\": \"user1@example.com\",\r\n    \"password\": \"user12345\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@example.com\",\r\n    \"password\": \"user12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJKb2ggYWRtaW4iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc2MDg2Njc5NCwiZXhwIjoxNzYwODcwMzk0fQ.44JOe2-1P0ZEu7z4yzdllK3r0b7g72PnxYsvrJ6OXmE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EVENTS",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg3Mjk4MiwiZXhwIjoxNzYwODc2NTgyfQ.jbI9eQzYZFRRDy5wWSTunSkGVKsMc-47OXaFaT_9XJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"feeding event\",\r\n  \"description\": \"A full-day  emerging technologies and startups.\",\r\n  \"eventDate\": \"2025-11-20\",\r\n  \"startTime\": \"09:00\",\r\n  \"endTime\": \"17:00\",\r\n  \"duration\": \"1 hours\",\r\n  \"location\": \"Dhaka Convention Center\",\r\n  \"price\": 150.00,\r\n  \"capacity\": 300,\r\n  \"tags\": [\"technology\", \"startups\", \"networking\"],\r\n  \"isActive\": true,\r\n  \"imageUrl\":\"https://event_buddy/event-buddy-backend/picture/1.png\"\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update existing event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg3MzY1OSwiZXhwIjoxNzYwODc3MjU5fQ.ARNxVIZXxFKHylxOPPBP7Vq1_VbCB-YndlC3ki3Je9U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Tech Expo 2025\",\r\n  \"description\": \"Updated description for the tech expo.\",\r\n  \"eventDate\": \"2025-11-22\",\r\n  \"startTime\": \"10:00\",\r\n  \"endTime\": \"18:00\",\r\n  \"duration\": \"8 hours\",\r\n  \"location\": \"Dhaka Convention Center\",\r\n  \"price\": 200,\r\n  \"capacity\": 350,\r\n  \"tags\": [\"technology\", \"expo\", \"innovation\"],\r\n  \"imageUrl\": \"https://example.com/images/tech-expo-updated.jpg\",\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/events/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg3MzgyNSwiZXhwIjoxNzYwODc3NDI1fQ.JdjwaC4YdJxlPgniR0Dk4a8_60W9reJ1tjpySGszyFQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register for an event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbG5hbWUiOiJ1c2VyMSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzYwODc0ODIxLCJleHAiOjE3NjA4Nzg0MjF9.cTLaiGOsVZ5a6d05ixvvw6kbPEJk58euQQYtRumuvhA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel booked event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbG5hbWUiOiJ1c2VyMSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzYwODc0MTYwLCJleHAiOjE3NjA4Nzc3NjB9.pcSAjstO3zTyKJds9MzSSBcQXRQWchImggstTdct3xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/1/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "see all registered events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbG5hbWUiOiJ1c2VyMSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzYwODc0ODIxLCJleHAiOjE3NjA4Nzg0MjF9.cTLaiGOsVZ5a6d05ixvvw6kbPEJk58euQQYtRumuvhA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/my/registrations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"my",
+								"registrations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin statistics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg3NDk0OSwiZXhwIjoxNzYwODc4NTQ5fQ.i_125OA10NT3NUwZ3Y4BVFGBbgA9JwRwlsiTp7Qh730",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/admin/statistics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"admin",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload event image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg3NTE4OSwiZXhwIjoxNzYwODc4Nzg5fQ.73AccUaCRyGGoHk8YV3xR3rBOJ7wLhi7cw3iESwsrXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1f05572d-a783-48b0-bdcf-5cf51262fd2f"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3005/events/6/image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"6",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/pages/paginated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"pages",
+								"paginated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/events/search/query?q=feeding",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"events",
+								"search",
+								"query"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "feeding"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/users/id/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"id",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/users/email/shishir@example.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"email",
+								"shishir@example.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BOOKINGS",
+			"item": [
+				{
+					"name": "book new event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbG5hbWUiOiJ1c2VyMSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzYwODg4MTQyLCJleHAiOjE3NjA4OTE3NDJ9.UbYcHejt3wuMICQVxU_DyXrry_TMqlxIgJbxNTg3-8w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"eventId\" : 1,\r\n    \"seats\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/bookings/new-booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"bookings",
+								"new-booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "see all bookings",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "cancel bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbG5hbWUiOiJ1c2VyMSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzYwODg4NjkxLCJleHAiOjE3NjA4OTIyOTF9.JzXeYY9l0bCkf81fT7X7RNTN2M_1FZlIP7_aaetR8iA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/bookings/cancel-booking/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"bookings",
+								"cancel-booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin - get all bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg4OTIwMywiZXhwIjoxNzYwODkyODAzfQ.P1KdsY6_OEFMuGEUs6pXyyHdPckLSYrXw7AehFbFLGQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/bookings/admin/all-bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"bookings",
+								"admin",
+								"all-bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin - cancel booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg4OTU4NCwiZXhwIjoxNzYwODkzMTg0fQ.k5m4fDlqkiI16uN4-0OWphBudp9C0BxUVolQXrVc1Is",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/bookings/admin/cancel-booking/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"bookings",
+								"admin",
+								"cancel-booking",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user - paginated bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2MDg4OTU4NCwiZXhwIjoxNzYwODkzMTg0fQ.k5m4fDlqkiI16uN4-0OWphBudp9C0BxUVolQXrVc1Is",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/bookings/paginated-bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"bookings",
+								"paginated-bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin - paginated bookings",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
