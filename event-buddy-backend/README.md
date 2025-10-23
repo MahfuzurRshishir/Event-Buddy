@@ -103,8 +103,8 @@ process.env.JWT_SECRET='supersecretkey'
 # Database
 DB_HOST=localhost
 DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=shishir
+DB_USERNAME=yourdbusername
+DB_PASSWORD=yourpass
 DB_NAME=eventbuddy
 
 PORT=3005
